@@ -48,7 +48,7 @@ clean:
 
 clear: fclean
 	@echo "$(RED)$(BOLD)🗑️  Removing all data...$(RESET)"
-	@sudo rm -r $(DATA_PATH)/*
+	@if [ -d "$(DATA_PATH)" ]; then sudo rm -rf $(DATA_PATH); fi
 	@echo "$(GREEN)$(BOLD)✓ Data cleared$(RESET)"
 	@$(MAKE) --no-print-directory all
 
