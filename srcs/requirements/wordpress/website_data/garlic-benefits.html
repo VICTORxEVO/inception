@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧄 The Garlic Guide — Unlock Nature's Powerhouse</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --bg-glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #f0f0f5;
+            --text-muted: #8888a0;
+            --gold: #fbbf24;
+            --gold-glow: rgba(251, 191, 36, 0.4);
+            --emerald: #34d399;
+            --purple: #a78bfa;
+            --rose: #fb7185;
+            --cyan: #22d3ee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .glow-orb:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            background: var(--gold-glow);
+            top: -100px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .glow-orb:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            background: rgba(34, 211, 153, 0.2);
+            top: 50%;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        .glow-orb:nth-child(3) {
+            width: 350px;
+            height: 350px;
+            background: rgba(167, 139, 250, 0.15);
+            bottom: 10%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(20px, 10px) scale(1.02); }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            min-height: 80vh;
+            padding: 40px 0;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--gold) 0%, #fff 50%, var(--emerald) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 480px;
+            margin-bottom: 32px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Floating Garlic Visual */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .garlic-main {
+            font-size: 12rem;
+            animation: bounce 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 60px var(--gold-glow));
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .orbit-ring {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border: 1px dashed var(--border);
+            border-radius: 50%;
+            animation: spin 30s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .orbit-item {
+            position: absolute;
+            font-size: 2rem;
+            animation: counter-spin 30s linear infinite;
+        }
+
+        @keyframes counter-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        .orbit-item:nth-child(1) { top: -15px; left: 50%; transform: translateX(-50%); }
+        .orbit-item:nth-child(2) { bottom: -15px; left: 50%; transform: translateX(-50%); }
+        .orbit-item:nth-child(3) { left: -15px; top: 50%; transform: translateY(-50%); }
+        .orbit-item:nth-child(4) { right: -15px; top: 50%; transform: translateY(-50%); }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Benefits Cards - Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 280px);
+            gap: 20px;
+        }
+
+        .bento-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bento-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 60px rgba(251, 191, 36, 0.15);
+        }
+
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .bento-card:hover::before {
+            opacity: 1;
+        }
+
+        .bento-card.large {
+            grid-column: span 2;
+        }
+
+        .bento-card.tall {
+            grid-row: span 2;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .card-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Feature Card with Visual */
+        .feature-visual {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-graphic {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pulse-circle {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--emerald), var(--cyan));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 211, 153, 0.4); }
+            50% { box-shadow: 0 0 0 30px rgba(34, 211, 153, 0); }
+        }
+
+        /* Compounds Section */
+        .compounds-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .compound-card {
+            background: linear-gradient(180deg, var(--bg-card) 0%, rgba(18, 18, 26, 0.5) 100%);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .compound-card:hover {
+            transform: scale(1.05);
+            border-color: var(--purple);
+        }
+
+        .compound-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--bg-glass);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .compound-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .compound-desc {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Timeline */
+        .timeline-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--emerald), var(--cyan), transparent);
+        }
+
+        .timeline-step {
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--gold);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .step-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Tips Carousel */
+        .tips-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scrollbar-width: none;
+        }
+
+        .tips-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tip-card {
+            flex: 0 0 300px;
+            background: linear-gradient(135deg, var(--bg-card), rgba(18, 18, 26, 0.8));
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .tip-card:hover {
+            border-color: var(--cyan);
+            transform: translateY(-4px);
+        }
+
+        .tip-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .tip-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .tip-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Warning Banner */
+        .warning-banner {
+            background: linear-gradient(135deg, rgba(251, 113, 133, 0.1), rgba(251, 113, 133, 0.05));
+            border: 1px solid rgba(251, 113, 133, 0.3);
+            border-radius: 20px;
+            padding: 32px;
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .warning-icon {
+            font-size: 2.5rem;
+        }
+
+        .warning-content h3 {
+            color: var(--rose);
+            margin-bottom: 12px;
+        }
+
+        .warning-content p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-brand {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content p {
+                margin: 0 auto 32px;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+            }
+
+            .bento-card.large, .bento-card.tall {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+
+            .compounds-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .timeline-container::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .garlic-main {
+                font-size: 8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .bento-grid, .compounds-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-glow">
+        <div class="glow-orb"></div>
+        <div class="glow-orb"></div>
+        <div class="glow-orb"></div>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>The Ultimate Garlic Guide</h1>
+                <p>
+                    Discover why this ancient superfood has been celebrated for millennia. 
+                    From heart health to immune power — unlock nature's pharmacy.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">Years of Use</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">300+</div>
+                        <div class="stat-label">Varieties</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Compounds</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="orbit-ring">
+                    <span class="orbit-item">❤️</span>
+                    <span class="orbit-item">🛡️</span>
+                    <span class="orbit-item">🧬</span>
+                    <span class="orbit-item">🧠</span>
+                </div>
+                <div class="garlic-main">🧄</div>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-tag">✨ Evidence-Based Benefits</span>
+                <h2 class="section-title">Why Garlic is a Superfood</h2>
+                <p class="section-subtitle">
+                    Backed by science, trusted for generations. Here's what garlic can do for you.
+                </p>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-card large">
+                    <div class="feature-visual">
+                        <div class="feature-content">
+                            <div class="card-icon">❤️</div>
+                            <h3 class="card-title">Heart Health Champion</h3>
+                            <p class="card-text">
+                                Studies show garlic can reduce blood pressure by 8-10 mmHg 
+                                and lower cholesterol by up to 15%. Your heart's best friend.
+                            </p>
+                        </div>
+                        <div class="feature-graphic">
+                            <div class="pulse-circle">💗</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-icon">🛡️</div>
+                    <h3 class="card-title">Immune Boost</h3>
+                    <p class="card-text">
+                        Reduces cold duration by 63% in clinical trials. Natural defense activated.
+                    </p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-icon">🦠</div>
+                    <h3 class="card-title">Antimicrobial</h3>
+                    <p class="card-text">
+                        Fights bacteria, viruses, and fungi with natural allicin power.
+                    </p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-icon">🧠</div>
+                    <h3 class="card-title">Brain Protection</h3>
+                    <p class="card-text">
+                        Antioxidants combat cognitive decline and support memory.
+                    </p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-icon">⚡</div>
+                    <h3 class="card-title">Energy & Performance</h3>
+                    <p class="card-text">
+                        Ancient athletes used it for stamina. Still works today.
+                    </p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-icon">🦴</div>
+                    <h3 class="card-title">Bone Health</h3>
+                    <p class="card-text">
+                        Supports bone density and may reduce osteoarthritis risk.
+                    </p>
+                </div>
+
+                <div class="bento-card">
+                    <div class="card-icon">✨</div>
+                    <h3 class="card-title">Skin Clarity</h3>
+                    <p class="card-text">
+                        Anti-inflammatory properties help combat acne and aging.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compounds Section -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-tag">🔬 The Science</span>
+                <h2 class="section-title">Active Compounds</h2>
+                <p class="section-subtitle">
+                    What makes garlic so powerful? Meet the molecules.
+                </p>
+            </div>
+
+            <div class="compounds-grid">
+                <div class="compound-card">
+                    <div class="compound-icon">⚗️</div>
+                    <h4 class="compound-name">Allicin</h4>
+                    <p class="compound-desc">Primary bioactive compound with antimicrobial properties</p>
+                </div>
+                <div class="compound-card">
+                    <div class="compound-icon">🧪</div>
+                    <h4 class="compound-name">Diallyl Disulfide</h4>
+                    <p class="compound-desc">Supports cardiovascular health and detoxification</p>
+                </div>
+                <div class="compound-card">
+                    <div class="compound-icon">💎</div>
+                    <h4 class="compound-name">S-allyl Cysteine</h4>
+                    <p class="compound-desc">Powerful antioxidant found in aged garlic</p>
+                </div>
+                <div class="compound-card">
+                    <div class="compound-icon">🌟</div>
+                    <h4 class="compound-name">Ajoene</h4>
+                    <p class="compound-desc">Anti-clotting properties for blood health</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Use -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-tag">📖 How-To Guide</span>
+                <h2 class="section-title">Maximize Your Garlic</h2>
+                <p class="section-subtitle">
+                    Follow these steps to get the most benefits from every clove.
+                </p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-step">
+                    <div class="step-number">1</div>
+                    <h4 class="step-title">Crush or Chop</h4>
+                    <p class="step-desc">Breaking cell walls releases alliin, which converts to allicin when exposed to air.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">2</div>
+                    <h4 class="step-title">Wait 10 Minutes</h4>
+                    <p class="step-desc">Let it rest before cooking. This allows allicin to fully form and stabilize.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">3</div>
+                    <h4 class="step-title">Cook Gently</h4>
+                    <p class="step-desc">Add near the end of cooking or use medium heat to preserve beneficial compounds.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-tag">💡 Pro Tips</span>
+                <h2 class="section-title">Creative Ways to Use Garlic</h2>
+            </div>
+
+            <div class="tips-scroll">
+                <div class="tip-card">
+                    <div class="tip-emoji">🥗</div>
+                    <h4 class="tip-title">Raw in Dressings</h4>
+                    <p class="tip-text">Blend with olive oil, lemon, and herbs for maximum potency.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-emoji">🍯</div>
+                    <h4 class="tip-title">Garlic Honey</h4>
+                    <p class="tip-text">Ferment cloves in raw honey for a sweet immune booster.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-emoji">🧈</div>
+                    <h4 class="tip-title">Compound Butter</h4>
+                    <p class="tip-text">Mix roasted garlic with butter for bread and steaks.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-emoji">🥣</div>
+                    <h4 class="tip-title">Black Garlic</h4>
+                    <p class="tip-text">Aged for deep umami flavor with extra antioxidants.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-emoji">💊</div>
+                    <h4 class="tip-title">Aged Extract</h4>
+                    <p class="tip-text">Odorless supplements for those who dislike the taste.</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-emoji">🍝</div>
+                    <h4 class="tip-title">Infused Oil</h4>
+                    <p class="tip-text">Low-heat infusion for pasta, pizza, and bread dipping.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Warning -->
+        <section class="section">
+            <div class="warning-banner">
+                <div class="warning-icon">⚠️</div>
+                <div class="warning-content">
+                    <h3>Safety Considerations</h3>
+                    <p>
+                        While garlic is generally safe, it may interact with blood thinners (like Warfarin) 
+                        and increase bleeding risk before surgery. Large amounts can cause digestive upset. 
+                        If you're pregnant, nursing, or on medication, consult your healthcare provider 
+                        before taking garlic supplements. Raw garlic is potent — start with small amounts.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-brand">🧄</div>
+            <p class="footer-text">
+                Educational content only — not medical advice.<br>
+                Always consult a healthcare professional for personalized guidance.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
