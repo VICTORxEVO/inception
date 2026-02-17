@@ -92,5 +92,5 @@ then
     echo "page active!"
 fi
 
-echo "runing command " "$@" "..."
+echo "running command " "$@" "..."
 exec "$@"

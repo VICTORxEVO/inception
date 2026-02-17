@@ -16,5 +16,5 @@ then
     -subj "/CN=${DOMAIN_NAME}"
 fi
 
-echo "runing command " "$@" "..."
+echo "running command " "$@" "..."
 exec "$@"

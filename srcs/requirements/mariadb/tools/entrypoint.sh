@@ -32,5 +32,5 @@ EOSQL
   wait "$pid"
 fi
 
-echo "runing command " "$@" "..."
+echo "running command " "$@" "..."
 exec "$@"
