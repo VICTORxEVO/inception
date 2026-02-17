@@ -24,8 +24,8 @@ The Inception stack includes the following services:
 - **Features**: Persistent data storage with automatic backups
 
 ### 4. **Data Volumes**
-- **WordPress Files**: Located at `/home/ysbai-jo/data/wordpress`
-- **Database Files**: Located at `/home/ysbai-jo/data/mariadb`
+- **WordPress Files**: Located at `/home/viktorevo/data/wordpress`
+- **Database Files**: Located at `/home/viktorevo/data/db`
 
 ## Getting Started
 
@@ -36,23 +36,17 @@ The Inception stack includes the following services:
 
 ```bash
 make
+# or explicitly:
+make up
 ```
 
 **What happens:**
+- Setup script creates directories and generates secure passwords (if needed)
 - Docker images are built (first time only - may take 5-10 minutes)
 - Containers are created and started
 - Services perform initialization (database creation, WordPress setup)
 - System becomes available at https://ysbai-jo.42.fr
-
-**Expected output:**
-```
-Building mariadb...
-Building wordpress...
-Building nginx...
-Creating inception_mariadb_1...
-Creating inception_wordpress_1...
-Creating inception_nginx_1...
-```
+- Logs are displayed automatically (Ctrl+C to exit)
 
 ### Stopping the Project
 
@@ -66,24 +60,51 @@ make down
 - All containers are stopped gracefully
 - Data in volumes is preserved
 - Network is removed
-- Next startup will be faster (images already built)
+- Images remain intact for fast restart
+- Next startup will be faster (no rebuild needed)
 
-### Restarting the Project
+### Monitoring Services
 
-To stop and start fresh:
+#### Check Container Status
 
 ```bash
-make re
+make ps
 ```
 
-**Use this when:**
-- Configuration changes were made
-- Issues require a clean restart
-- Environment variables were modified
+Shows which containers are running and their current state.
 
-### Complete Reset
+#### View Live Logs
 
-To remove everything and start from scratch:
+```bash
+make logs
+```
+
+Displays real-time logs from all containers. Press Ctrl+C to exit.
+
+#### Monitor Resource Usage
+
+```bash
+make stats
+```
+
+Shows CPU, memory, network, and disk usage for each container in real-time.
+
+### Cleanup Commands
+
+#### Basic Cleanup (Preserve Images)
+
+```bash
+make clean
+```
+
+**What happens:**
+- Stops all containers
+- Removes all volumes (⚠️ **WordPress and database data lost**)
+- Keeps Docker images (fast rebuild)
+
+**Use when:** You want to reset data but keep images
+
+#### Full Docker Cleanup
 
 ```bash
 make fclean
@@ -91,11 +112,38 @@ make fclean
 
 ⚠️ **WARNING**: This command will:
 - Stop all containers
-- Delete all Docker images
 - Remove all volumes (⚠️ **ALL DATA WILL BE LOST**)
-- Clean the build cache
+- Delete all Docker images
+- Prune Docker system (cache, unused networks, etc.)
+- Clean build cache
 
-Use this only when you want to completely rebuild the project.
+**Use when:** You want to completely rebuild from scratch
+
+#### Complete Reset with Restart
+
+```bash
+make clear
+```
+
+⚠️ **NUCLEAR OPTION**: This command will:
+- Perform full cleanup (same as `fclean`)
+- Delete data directory from host system (`/home/viktorevo/data`)
+- Automatically rebuild and restart everything
+
+**Use when:** You want absolutely everything deleted and recreated fresh
+
+### Rebuild and Restart
+
+```bash
+make re
+```
+
+Equivalent to: `make fclean` then `make all`
+
+**Use this when:**
+- Configuration changes were made in Dockerfiles
+- Environment variables were modified
+- You need a clean rebuild with fresh images
 
 ## Accessing the Website
 
@@ -130,14 +178,23 @@ Located at: `./secrets/`
 
 ```
 secrets/
-├── credentials.txt          # WordPress user credentials
-├── db_password.txt          # Database user password
-└── db_root_password.txt     # Database root password
+├── db_root_password.txt         # Database root password
+├── db_user_password.txt         # Database user password
+├── wp_admin_password.txt        # WordPress admin password
+├── wp_user_password.txt         # WordPress user password
+├── ftp_admin_password.txt       # FTP admin password (bonus)
+├── ftp_user_password.txt        # FTP user password (bonus)
+└── portainer_admin_password.txt # Portainer password (bonus)
 ```
 
-To view:
+**Password Generation:**
+- Passwords are automatically generated on first run using secure random generation (OpenSSL)
+- Each password is 25 characters long with high entropy
+- Existing passwords are never overwritten - they're preserved between rebuilds
+
+To view a password:
 ```bash
-cat secrets/credentials.txt
+cat secrets/db_root_password.txt
 ```
 
 #### 2. **Environment File** (Configuration)
@@ -177,20 +234,17 @@ The WordPress installation includes two users:
 
 1. Edit secret files:
 ```bash
-nano secrets/db_password.txt
+nano secrets/db_user_password.txt
 nano secrets/db_root_password.txt
 ```
 
-2. Update `.env` file if necessary:
+2. Rebuild and restart:
 ```bash
-nano srcs/.env
-```
-
-3. Rebuild and restart:
-```bash
-make fclean
+make clean  # or make fclean for complete rebuild
 make
 ```
+
+**Note:** Updating secrets requires rebuilding because they're read during container initialization.
 
 ## Checking Service Status
 
@@ -204,9 +258,9 @@ docker ps
 Expected output (3 running containers):
 ```
 CONTAINER ID   IMAGE       STATUS          PORTS                   NAMES
-abc123def456   nginx       Up 5 minutes    0.0.0.0:443->443/tcp   inception_nginx_1
-def456ghi789   wordpress   Up 5 minutes                           inception_wordpress_1
-ghi789jkl012   mariadb     Up 5 minutes                           inception_mariadb_1
+abc123def456   nginx       Up 5 minutes    0.0.0.0:443->443/tcp   nginx
+def456ghi789   wordpress   Up 5 minutes                           wordpress
+ghi789jkl012   mariadb     Up 5 minutes                           mariadb
 ```
 
 2. **Check website accessibility:**
@@ -220,7 +274,7 @@ Should return HTML content (not error message).
 
 #### NGINX Status:
 ```bash
-docker logs inception_nginx_1
+docker logs nginx
 ```
 
 ✅ **Healthy output:**
@@ -238,7 +292,7 @@ Cannot connect to wordpress
 
 #### WordPress Status:
 ```bash
-docker logs inception_wordpress_1
+docker logs wordpress
 ```
 
 ✅ **Healthy output:**
@@ -249,7 +303,7 @@ PHP-FPM started
 
 #### MariaDB Status:
 ```bash
-docker logs inception_mariadb_1
+docker logs mariadb
 ```
 
 ✅ **Healthy output:**
@@ -261,7 +315,7 @@ Database initialized
 ### Testing Database Connection
 
 ```bash
-docker exec inception_mariadb_1 mysql -u root -p$(cat secrets/db_root_password.txt) -e "SHOW DATABASES;"
+docker exec -it mariadb sh -c 'mariadb -u root -p$(cat /run/secrets/db_root_password) -e "SHOW DATABASES;"'
 ```
 
 Should list the WordPress database.
@@ -276,12 +330,13 @@ Should list the WordPress database.
 ```bash
 cat /etc/hosts | grep ysbai-jo.42.fr
 ```
+Should contain: `127.0.0.1 ysbai-jo.42.fr`
 3. Restart services: `make re`
 
 ### Issue: "Database connection error"
 
 **Solution:**
-1. Check MariaDB logs: `docker logs inception_mariadb_1`
+1. Check MariaDB logs: `docker logs mariadb`
 2. Verify database is initialized: Wait 30 seconds after starting
 3. Check credentials match in `.env` and secrets
 
@@ -309,24 +364,24 @@ docker logs <container_name>
 
 #### WordPress Content:
 ```bash
-sudo tar -czf wordpress-backup-$(date +%Y%m%d).tar.gz /home/ysbai-jo/data/wordpress/
+sudo tar -czf wordpress-backup-$(date +%Y%m%d).tar.gz /home/viktorevo/data/wordpress/
 ```
 
 #### Database:
 ```bash
-docker exec inception_mariadb_1 mysqldump -u root -p$(cat secrets/db_root_password.txt) --all-databases > database-backup-$(date +%Y%m%d).sql
+docker exec mariadb sh -c 'mariadb-dump -u root -p$(cat /run/secrets/db_root_password) --all-databases' > database-backup-$(date +%Y%m%d).sql
 ```
 
 ### Restoring Data
 
 #### WordPress Files:
 ```bash
-sudo tar -xzf wordpress-backup-YYYYMMDD.tar.gz -C /home/ysbai-jo/data/
+sudo tar -xzf wordpress-backup-YYYYMMDD.tar.gz -C /home/viktorevo/data/
 ```
 
 #### Database:
 ```bash
-cat database-backup-YYYYMMDD.sql | docker exec -i inception_mariadb_1 mysql -u root -p$(cat secrets/db_root_password.txt)
+cat database-backup-YYYYMMDD.sql | docker exec -i mariadb sh -c 'mariadb -u root -p$(cat /run/secrets/db_root_password)'
 ```
 
 ## Maintenance
@@ -334,7 +389,7 @@ cat database-backup-YYYYMMDD.sql | docker exec -i inception_mariadb_1 mysql -u r
 ### Regular Maintenance Tasks
 
 **Weekly:**
-- Check disk space: `df -h /home/ysbai-jo/data/`
+- Check disk space: `df -h /home/viktorevo/data/`
 - Review logs for errors
 - Backup data
 
@@ -342,6 +397,38 @@ cat database-backup-YYYYMMDD.sql | docker exec -i inception_mariadb_1 mysql -u r
 - Update WordPress core and plugins (via admin panel)
 - Clean up old Docker images: `docker system prune`
 - Test backup restoration
+
+## Quick Reference
+
+### All Make Commands
+
+| Command | Effect | Data Loss | Use Case |
+|---------|--------|-----------|----------|
+| `make` or `make up` | Start all services | ✅ No | Normal startup |
+| `make down` | Stop services | ✅ No | Temporary shutdown |
+| `make ps` | Show container status | ✅ No | Health check |
+| `make logs` | View live logs | ✅ No | Debugging |
+| `make stats` | Show resource usage | ✅ No | Performance monitoring |
+| `make clean` | Stop + remove volumes | ⚠️ Yes (data) | Reset data |
+| `make fclean` | Full Docker cleanup | ⚠️ Yes (all) | Fresh rebuild |
+| `make clear` | Nuclear reset + restart | ⚠️ Yes (all + host data) | Complete wipe |
+| `make re` | Rebuild from scratch | ⚠️ Yes (all) | After config changes |
+
+### Container Names
+
+- **nginx**: Web server and TLS termination
+- **wordpress**: PHP-FPM and WordPress application
+- **mariadb**: Database server
+
+### Important File Locations
+
+| Item | Location |
+|------|----------|
+| Environment config | `srcs/.env` |
+| Password secrets | `secrets/*.txt` |
+| WordPress data | `/home/viktorevo/data/wordpress` |
+| Database data | `/home/viktorevo/data/db` |
+| Docker compose | `srcs/docker-compose.yml` |
 
 ## Support
 
