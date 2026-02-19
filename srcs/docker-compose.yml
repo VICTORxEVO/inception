@@ -166,6 +166,17 @@ services:
     networks:
     - external_net
 
+  apache:
+    build:
+      context: ./requirements/bonus/apache
+    image: apache
+    container_name: apache
+    restart: always
+    ports:
+    - "8888:80"
+    networks:
+      - external_net
+
 
 volumes:
   db_data:
