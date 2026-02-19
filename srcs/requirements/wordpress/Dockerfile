@@ -31,7 +31,6 @@ RUN sed -i 's|^listen = .*|listen = 0.0.0.0:9000|' /etc/php${PHP_VER}/php-fpm.d/
  # Increase memory limit for PHP-FPM
 RUN sed -i 's/memory_limit = .*/memory_limit = 512M/' /etc/php${PHP_VER}/php.ini
 
-# Install wp-cli
 RUN curl -sS https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o \
  /usr/local/bin/wp \
  && chmod +x /usr/local/bin/wp
@@ -39,8 +38,6 @@ RUN curl -sS https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cl
 WORKDIR /var/www/html
 COPY tools/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
-
-COPY website_data /tmp/website_data/
 
 EXPOSE 9000
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
