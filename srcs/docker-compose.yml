@@ -1,32 +1,27 @@
 
-# The version of the Docker Compose file format (implied as latest)
 services:
 
-  # --- NGINX SERVICE ---
-  # Acts as a web server and reverse proxy to handle SSL (HTTPS)
   nginx:
     build:
-      context:  ./requirements/nginx # Folder containing the Nginx Dockerfile
-    image: nginx                    # Name for the generated image
-    pull_policy: if_not_present
-    container_name: nginx           # Name of the container when running
+      context:  ./requirements/nginx
+    image: nginx
+    pull_policy: if_not_present  # if image was found localy
+    container_name: nginx
     depends_on:
       wordpress:
-        condition: service_healthy                   # Don't start Nginx until WordPress is ready
+        condition: service_healthy
     ports:
-      - "443:443"                   # Maps Host Port 443 to Container Port 443 (HTTPS)
+      - "443:443"
     volumes:
-      - wp_data:/var/www/html       # Shares the website files with WordPress
+      - wp_data:/var/www/html
     networks:
       - external_net
-      - wp_net                      # Connects to the internal private network
-    restart: always                 # Auto-restart if the container crashes
+      - wp_net
+    restart: always              # Auto-restart if the container crashes
     environment:
       DOMAIN_NAME: ${DOMAIN_NAME}
     stop_grace_period: 4s 
 
-  # --- WORDPRESS SERVICE ---
-  # Runs the PHP engine and the WordPress application
   wordpress:
     build:
       context: ./requirements/wordpress
@@ -35,7 +30,7 @@ services:
     container_name: wordpress
     depends_on:
       mariadb:
-        condition: service_healthy  # Wait until MariaDB healthcheck passes
+        condition: service_healthy
     environment:
       MYSQL_USER:     ${MYSQL_USER}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -46,18 +41,18 @@ services:
       WP_USER:        ${WP_USER}
       WP_USER_EMAIL:  ${WP_USER_EMAIL}
     secrets:
-      - db_user_password            # Securely passes passwords as files
+      - db_user_password
       - wp_admin_password
       - wp_user_password
     volumes:
-      - wp_data:/var/www/html       # Where the website code/images live
+      - wp_data:/var/www/html
     networks:
       - wp_net
       - db_net
       - cache_net
       - external_net
     restart: always
-    stop_grace_period: 4s           # Wait max 4 seconds before SIGKILL
+    stop_grace_period: 4s   # Wait max 4 seconds before SIGKILL
     healthcheck:
       test: 
         - CMD-SHELL
@@ -69,9 +64,6 @@ services:
       timeout: 3s
       retries: 5
       start_period: 70s
-
-  # --- MARIADB SERVICE ---
-  # The database engine where all your posts and users are stored
   mariadb:
     build:
       context: ./requirements/mariadb
@@ -82,10 +74,10 @@ services:
       MYSQL_USER:     ${MYSQL_USER}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
     secrets:
-      - db_root_password           # Only MariaDB needs the Root password
+      - db_root_password
       - db_user_password
     volumes:
-      - db_data:/var/lib/mysql     # IMPORTANT: Keeps your data if container is deleted
+      - db_data:/var/lib/mysql
     networks:
       - db_net
     restart: always
@@ -108,7 +100,6 @@ services:
     networks:
     - cache_net
     stop_grace_period: 4s 
-
 
   ftp:
     build:
@@ -134,6 +125,7 @@ services:
     - wp_net
     - external_net
     stop_grace_period: 4s
+
 
   adminer:
     build:
@@ -169,15 +161,12 @@ services:
     secrets:
     - portainer_admin_password
     volumes:
-    - /var/run/docker.sock:/var/run/docker.sock  # Docker socket access
-    - portainer_data:/data                        # Persist data
+    - /var/run/docker.sock:/var/run/docker.sock
+    - portainer_data:/data
     networks:
     - external_net
 
 
-
-# --- VOLUMES CONFIGURATION ---
-# Defines where data is physically saved on your computer (Host)
 volumes:
   db_data:
     driver: local
@@ -194,8 +183,7 @@ volumes:
   portainer_data:
     driver: local
 
-# --- NETWORKS CONFIGURATION ---
-# Creates a private virtual bridge so containers can talk to each other
+
 networks:
   db_net:
     internal: true
