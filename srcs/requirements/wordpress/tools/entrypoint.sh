@@ -53,12 +53,10 @@ then
     "${WP_USER}" "${WP_USER_EMAIL}" \
     --user_pass="${WP_USER_PASS}" \
     --role=author
-    
-  # --- REDIS SETUP STARTS HERE ---
-    
-    # 3. Add Redis Host/Port to wp-config.php
+
   wp config set WP_REDIS_HOST redis --allow-root
   wp config set WP_REDIS_PORT 6379 --allow-root
+
   # This prevents the cache from being shared if you had multiple sites
   wp config set WP_CACHE_KEY_SALT "${DOMAIN_NAME}" --allow-root 
 
