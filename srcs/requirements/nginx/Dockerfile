@@ -2,7 +2,6 @@ FROM alpine:3.21
 
 RUN apk add --no-cache nginx openssl gettext
 
-# Create self-signed cert if none is mounted (for dev); replace with real certs as needed
 RUN mkdir -p /etc/nginx/certs /var/www/html /run/nginx
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf

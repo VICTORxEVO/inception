@@ -7,7 +7,6 @@ RUN mkdir -p /run/mysqld /var/lib/mysql && \
 
 RUN rm -f /etc/my.cnf.d/*
 
-# copy config file and entrypoint
 COPY conf/50-server.cnf /etc/my.cnf.d/50-server.cnf
 COPY tools/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh

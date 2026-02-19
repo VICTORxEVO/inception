@@ -2,7 +2,6 @@ FROM alpine:3.21
 
 RUN apk add --no-cache vsftpd
 
-# Add config + entrypoint
 COPY conf/vsftpd.conf /etc/vsftpd/vsftpd.conf
 COPY tools/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh

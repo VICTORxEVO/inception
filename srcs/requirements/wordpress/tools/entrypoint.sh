@@ -57,14 +57,13 @@ then
   wp config set WP_REDIS_HOST redis --allow-root
   wp config set WP_REDIS_PORT 6379 --allow-root
 
-  # This prevents the cache from being shared if you had multiple sites
+  # prevents the cache from being shared in case of multiple sites
   wp config set WP_CACHE_KEY_SALT "${DOMAIN_NAME}" --allow-root 
 
-  # 4. Install the Plugin
   echo "installing redis plugin..."
   wp plugin install redis-cache --activate --allow-root
     
-  # 5. Enable the actual Object Cache (This creates wp-content/object-cache.php)
+  # Enable the actual Object Cache (This creates wp-content/object-cache.php)
    wp redis enable --allow-root
 fi
 
