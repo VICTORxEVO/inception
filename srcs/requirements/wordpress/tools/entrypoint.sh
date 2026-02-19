@@ -68,27 +68,5 @@ then
    wp redis enable --allow-root
 fi
 
-# add redis (website cache)
-# 1. Create the page only if it doesn't exist
-if ! wp post list --post_type=page --name='garlic-benefits' --format=ids --allow-root | grep -q . ;
-then
-    
-    wp post create /tmp/website_data/garlic-benefits.html \
-        --post_type=page \
-        --post_title='garlic benefits' \
-        --post_name='garlic-benefits' \
-        --post_status=publish \
-        --allow-root
-
-    # 2. Get the ID
-    page_id=$(wp post list --post_type=page --name='garlic-benefits' --field=ID --allow-root)
-
-    # 3. Set as Front Page
-    wp option update show_on_front 'page' --allow-root
-    wp option update page_on_front "$page_id" --allow-root
-    
-    echo "page active!"
-fi
-
 echo "running command " "$@" "..."
 exec "$@"
