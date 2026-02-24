@@ -1,6 +1,6 @@
 # Inception
 
-*This project has been created as part of the 42 curriculum by VICTORxEVO.*
+*This project has been created as part of the 42 curriculum by ysbai-jo.*
 
 ## Description
 
@@ -34,22 +34,20 @@ cd inception
 
 2. Configure your environment:
 ```bash
-# Copy and edit the environment file
-cp srcs/.env.example srcs/.env
-nano srcs/.env
+# create env file with default values
+make env
+vim srcs/.env
 ```
 
 3. Set up secrets (see DEV_DOC.md for details):
 ```bash
-mkdir -p secrets
-echo "your_db_password" > secrets/db_password.txt
-echo "your_db_root_password" > secrets/db_root_password.txt
+make secrets
 ```
 
 4. Configure domain name:
 ```bash
 # Add to /etc/hosts
-sudo echo "127.0.0.1 VICTORxEVO.42.fr" >> /etc/hosts
+sudo echo "127.0.0.1 ysbai-jo.42.fr" >> /etc/hosts
 ```
 
 ### Execution
@@ -64,7 +62,7 @@ Stop all services:
 make down
 ```
 
-Clean everything (containers, images, volumes):
+Clean (containers, images, volumes):
 ```bash
 make fclean
 ```
@@ -74,9 +72,14 @@ Restart services:
 make re
 ```
 
+Clear everthing (docker volume) and rebuild
+```bash
+make clear
+```
+
 ### Access
 - **WordPress site**: https://ysbai-jo.42.fr
-- **WordPress admin**: https://ysbai-jo.42.fr/wp-login
+- **WordPress admin**: https://ysbai-jo.42.fr/wp-admin
 
 ## Project Architecture
 
@@ -150,7 +153,7 @@ This project implements a three-tier web application architecture:
 | **Backup** | Docker volume commands | Standard filesystem tools |
 
 **Project Implementation**:
-- **Volumes** for: WordPress files (`/home/VICTORxEVO/data/wordpress`), MariaDB data (`/home/VICTORxEVO/data/mariadb`)
+- **Volumes** for: WordPress files (`/home/ysbai-jo/data/wordpress`), MariaDB data (`/home/ysbai-jo/data/mariadb`)
 - Ensures data persistence across container lifecycles
 - Easy backup and migration
 
@@ -196,7 +199,6 @@ Each Dockerfile:
 
 ### Tutorials & Articles
 - [Dockerfile Best Practices](https://docs.docker.com/develop/dev-best-practices/)
-- [Understanding PID 1 in Docker](https://cloud.google.com/architecture/best-practices-for-building-containers)
 - [SSL/TLS Configuration](https://ssl-config.mozilla.org/)
 - [WP-CLI Documentation](https://wp-cli.org/)
 
@@ -250,4 +252,4 @@ This project is part of the 42 School curriculum. Feel free to reference it for 
 
 ## Author
 
-**VICTORxEVO** - [GitHub Profile](https://github.com/VICTORxEVO)
+**yassir sbai** - [GitHub Profile](https://github.com/VICTORxEVO)
