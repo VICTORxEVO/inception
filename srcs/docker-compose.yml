@@ -204,8 +204,6 @@ networks:
     internal: true
   external_net:
 
-# --- SECRETS CONFIGURATION ---
-# Points to the actual text files containing your sensitive passwords
 secrets:
   db_root_password:
     file: ../secrets/db_root_password.txt
