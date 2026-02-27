@@ -9,7 +9,7 @@ RUN apk add --no-cache \
 
 WORKDIR /var/www/html
 
-# get lastest adminer 5.4.1
+# lastest adminer 5.4.1
 RUN wget "https://www.adminer.org/static/download/5.4.1/adminer-5.4.1.php" \
     -O index.php && chmod 644 index.php
 
