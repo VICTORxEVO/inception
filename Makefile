@@ -69,6 +69,7 @@ stats: check-env
 
 clear: check-env clean delete
 	@echo "$(RED)$(BOLD)🗑️  Removing all data...$(RESET)"
+	@docker system prune -af
 	@sleep 1
 	@$(MAKE) --no-print-directory all
 
