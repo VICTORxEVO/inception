@@ -19,11 +19,11 @@ This generates `srcs/.env` interactively. Key variables:
 
 | Variable | Example |
 |----------|---------|
-| `ysbai-jo` | `wil` |
-| `DOMAIN_NAME` | `wil.42.fr` |
+| `LOGIN` | `ysbai-jo` |
+| `DOMAIN_NAME` | `ysbai-jo.42.fr` |
 | `MYSQL_USER` | `wp_user` |
 | `MYSQL_DATABASE` | `wordpress` |
-| `WP_ADMIN_USER` | `boss` (must not contain "admin") |
+| `WP_ADMIN_USER` | `imperor` (must not contain "admin") |
 | `FTP_ADMIN_USER` / `FTP_USER` | FTP credentials |
 
 ### 2. Create Secrets
