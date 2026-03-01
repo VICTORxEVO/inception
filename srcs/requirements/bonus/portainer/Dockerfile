@@ -1,10 +1,8 @@
 FROM alpine:3.21
 
-# Install dependencies needed for Portainer to run on Alpine
 RUN apk add --no-cache libc6-compat curl
 
-# We use 'curl' to get the Linux amd64 version
-RUN curl -L https://github.com/portainer/portainer/releases/download/2.33.6/portainer-2.33.6-linux-amd64.tar.gz -o portainer.tar.gz \
+RUN curl -L https://github.com/portainer/portainer/releases/download/2.39.0/portainer-2.39.0-linux-amd64.tar.gz -o portainer.tar.gz \
     && tar -xzf portainer.tar.gz -C /opt \
     && rm portainer.tar.gz
 
