@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMD RDNA 4 Architecture — Deep Dive</title>
+<meta name="description" content="Complete technical breakdown of AMD's RDNA 4 GPU architecture — compute design, ray tracing, AI acceleration, and memory subsystem.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="logo">AMD</div>
+    <span>RDNA</span>&nbsp;4
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Architecture</a></li>
+    <li><a href="cards.html">Graphics Cards</a></li>
+    <li><a href="benchmarks.html">Benchmarks</a></li>
+    <li><a href="vs-blackwell.html">vs Blackwell</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-bg-label">RDNA4</div>
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span>Architecture Deep Dive</div>
+    <h1>Redesigned from the<br><span class="accent">Ground Up</span></h1>
+    <p class="hero-sub">
+      RDNA 4 is AMD's most ambitious GPU microarchitecture to date —
+      delivering a generational leap in compute, ray tracing, AI, and memory efficiency
+      on TSMC's 4&nbsp;nm node.
+    </p>
+    <div class="btn-group">
+      <a class="btn btn-primary" href="#compute">Explore Architecture</a>
+      <a class="btn btn-ghost"   href="cards.html">View Graphics Cards →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STAT STRIP ────────────────────────────────────────── -->
+<div class="stat-strip">
+  <div class="stat-grid">
+    <div class="stat-item fade-in">
+      <div class="val" data-count="64" data-suffix=" CUs">0 CUs</div>
+      <div class="label">Max Compute Units</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="val" data-count="2" data-suffix="×">0×</div>
+      <div class="label">Ray Tracing vs RDNA&nbsp;3</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="val" data-count="4" data-suffix=" nm">0 nm</div>
+      <div class="label">TSMC Process Node</div>
+    </div>
+    <div class="stat-item fade-in">
+      <div class="val" data-count="800" data-suffix=" GB/s">0 GB/s</div>
+      <div class="label">Peak Memory Bandwidth</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── COMPUTE ───────────────────────────────────────────── -->
+<section class="section" id="compute">
+  <div class="section-inner">
+    <div class="section-label">Compute</div>
+    <h2>Redesigned <span class="accent">Compute Unit</span></h2>
+    <p class="section-lead">
+      Each RDNA 4 Compute Unit houses 64 shader processors arranged across two SIMD32 units,
+      retaining the RDNA 3 layout while dramatically improving IPC through wider issue ports
+      and a deeper out-of-order instruction scheduler.
+    </p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <h3>Dual SIMD32 Design</h3>
+        <p>Two SIMD32 vectors per CU enable 64 FP32 operations per clock, with a unified 32-bit / 16-bit execution path for optimal throughput.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔁</div>
+        <h3>Wider Issue Width</h3>
+        <p>The scheduler now issues up to 4 independent instructions simultaneously per SIMD, reducing stalls and improving occupancy.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💾</div>
+        <h3>Larger Register File</h3>
+        <p>Expanded vector and scalar register files reduce spilling to local memory, boosting throughput for complex shader workloads.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Improved Branch Execution</h3>
+        <p>Enhanced scalar branch predictor and converged execution paths cut divergence penalties for game shaders and compute kernels.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧵</div>
+        <h3>Async Compute</h3>
+        <p>8 hardware compute queues per shader engine allow full overlap of graphics and compute workloads for FSR and VRS operations.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏎️</div>
+        <h3>Clock Headroom</h3>
+        <p>TSMC 4 nm enables sustained boost clocks above 3.0 GHz on flagship dies, a significant step up from RDNA 3's 2.7 GHz target.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── RAY TRACING ───────────────────────────────────────── -->
+<section class="section" id="rt">
+  <div class="section-inner">
+    <div class="section-label">Ray Tracing</div>
+    <h2>3rd&#8209;Gen <span class="accent">Ray Accelerators</span></h2>
+    <p class="section-lead">
+      RDNA 4 introduces third-generation hardware Ray Accelerators — one per CU —
+      delivering 2× the ray-box and ray-triangle intersection throughput versus RDNA 3.
+    </p>
+
+    <div class="feature-row">
+      <div class="feature-art">
+        <div class="glow"></div>
+        <div class="art-label">RT</div>
+      </div>
+      <div class="feature-text">
+        <h3>Dedicated Intersection Engine</h3>
+        <p>Each Ray Accelerator can process two BVH (Bounding Volume Hierarchy) traversal steps per clock — double compared to RDNA 3 — enabling complex scenes with thousands of light bounces at playable frame rates.</p>
+        <p>The improved RA also handles procedural intersection shaders entirely in hardware, offloading work from the shader processors.</p>
+        <div class="tag-list">
+          <span class="tag red">2× Ray-Box</span>
+          <span class="tag red">2× Ray-Triangle</span>
+          <span class="tag amber">Hardware BVH</span>
+          <span class="tag">Per-CU Accelerator</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="compare-block">
+      <h4>Ray Tracing Throughput (relative, higher is better)</h4>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RDNA 4 (RX 9070 XT)</span><span>100%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="100%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RDNA 3 (RX 7900 XTX)</span><span>~52%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="52%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RDNA 2 (RX 6900 XT)</span><span>~28%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="28%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── AI ────────────────────────────────────────────────── -->
+<section class="section" id="ai">
+  <div class="section-inner">
+    <div class="section-label">AI Acceleration</div>
+    <h2>New <span class="accent">AI Matrix Cores</span></h2>
+    <p class="section-lead">
+      Dedicated WMMA (Wave Matrix Multiply Accumulate) units have been added to every CU,
+      providing up to 4× the AI inference throughput of RDNA 3.
+    </p>
+
+    <div class="feature-row reverse">
+      <div class="feature-art">
+        <div class="glow"></div>
+        <div class="art-label">AI</div>
+      </div>
+      <div class="feature-text">
+        <h3>WMMA Matrix Units</h3>
+        <p>Two WMMA units per CU operate on 16×16 matrix tiles in FP16, BF16, INT8, and INT4 formats. These units are entirely independent of the shader processors, so AI inference runs in parallel with rendering.</p>
+        <p>This powers <strong>FidelityFX Super Resolution 4 (FSR 4)</strong>, AMD's first machine-learning upscaler, delivering native-quality visuals at a fraction of the rendering cost.</p>
+        <div class="tag-list">
+          <span class="tag red">4× vs RDNA 3</span>
+          <span class="tag cyan">FP16 / BF16 / INT8 / INT4</span>
+          <span class="tag green">FSR 4 Powered</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🔬</div>
+        <h3>FidelityFX Super Resolution 4</h3>
+        <p>Machine-learning upscaling now leverages the WMMA cores, producing temporally stable, near-native image quality from low-resolution inputs.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎬</div>
+        <h3>AV1 Encode / Decode</h3>
+        <p>Dual AV1 encode engines offer up to 8K60 encoding, enabling high-quality streaming and recording with minimal performance impact.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <h3>ROCm & DirectML</h3>
+        <p>Full ROCm 6 support and optimised DirectML kernels allow RDNA 4 to run LLM inference and diffusion models at competitive performance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── MEMORY ────────────────────────────────────────────── -->
+<section class="section" id="memory">
+  <div class="section-inner">
+    <div class="section-label">Memory &amp; Cache</div>
+    <h2>Faster <span class="accent">Memory Subsystem</span></h2>
+    <p class="section-lead">
+      RDNA 4 pairs GDDR6 memory with a redesigned Infinity Cache hierarchy and a
+      wider internal data fabric to keep the shader engines fed.
+    </p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">📦</div>
+        <h3>256-bit GDDR6</h3>
+        <p>A 256-bit memory bus with 20 Gbps GDDR6 modules delivers up to 640 GB/s of raw bandwidth on the RX 9070 XT.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🗄️</div>
+        <h3>Infinity Cache 2.0</h3>
+        <p>64 MB on-die cache with improved hit-rate prediction and wider internal bandwidth reduces effective memory latency by up to 35%.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔗</div>
+        <h3>PCIe 5.0 ×16</h3>
+        <p>Native PCIe 5.0 support doubles slot bandwidth to 128 GB/s, eliminating any CPU-to-GPU transfer bottleneck for data-heavy workloads.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <h3>DisplayPort 2.1a</h3>
+        <p>Up to 80 Gbps UHBR20 signalling supports 8K144 or 4K360 over a single cable, alongside HDMI 2.1b for 10K output.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── TIMELINE ──────────────────────────────────────────── -->
+<section class="section" id="history">
+  <div class="section-inner">
+    <div class="section-label">RDNA Lineage</div>
+    <h2>From <span class="accent">RDNA 1 to RDNA 4</span></h2>
+    <p class="section-lead">Four generations of architectural evolution, each delivering a meaningful leap in performance-per-watt.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <h4>RDNA 1 — 2019 (7 nm)</h4>
+        <p>Introduced the Compute Unit redesign with dual SIMD32 execution, replacing GCN's SIMD16. Launched with the RX 5700 series.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <h4>RDNA 2 — 2020 (7 nm)</h4>
+        <p>Added hardware ray tracing accelerators and Infinity Cache. The RX 6000 series competed directly with Nvidia's Ampere lineup.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <h4>RDNA 3 — 2022 (5 nm + 6 nm)</h4>
+        <p>Chiplet multi-die design debuted. Doubled AI throughput with WMMA and introduced DisplayPort 2.1. RX 7000 series.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <h4>RDNA 4 — 2025 (4 nm)</h4>
+        <p>Monolithic die on TSMC 4 nm. 3rd-gen ray accelerators (2× RT throughput), new WMMA cores (4× AI), and FSR 4. RX 9000 series.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><span>AMD</span> RDNA 4 — Architecture Reference</div>
+    <p>Informational fan site. All trademarks belong to their respective owners.</p>
+    <p style="margin-top:12px">
+      <a href="index.html">Architecture</a> &nbsp;·&nbsp;
+      <a href="cards.html">Graphics Cards</a> &nbsp;·&nbsp;
+      <a href="benchmarks.html">Benchmarks</a> &nbsp;·&nbsp;
+      <a href="vs-blackwell.html">vs Blackwell</a>
+    </p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

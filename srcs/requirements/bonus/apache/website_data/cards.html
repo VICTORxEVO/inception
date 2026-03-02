@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMD RDNA 4 — Radeon RX 9000 Graphics Cards</title>
+<meta name="description" content="Full specs and comparison of the AMD Radeon RX 9070 XT and RX 9070 — the first RDNA 4 graphics cards.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .gpu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+  .featured { border-color: rgba(227,0,27,.5); }
+  .featured .gpu-card-header { background: linear-gradient(135deg, rgba(227,0,27,.12) 0%, var(--bg-2) 100%); }
+  .perf-section { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 32px; margin-bottom: 24px; }
+  .perf-section h4 { font-size: 1rem; font-weight: 700; margin-bottom: 20px; }
+  .note { font-size: .8rem; color: var(--muted); margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="logo">AMD</div>
+    <span>RDNA</span>&nbsp;4
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Architecture</a></li>
+    <li><a href="cards.html" class="active">Graphics Cards</a></li>
+    <li><a href="benchmarks.html">Benchmarks</a></li>
+    <li><a href="vs-blackwell.html">vs Blackwell</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-bg-label">RX9000</div>
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span>Radeon RX 9000 Series</div>
+    <h1>The <span class="accent">RDNA 4</span><br>Graphics Cards</h1>
+    <p class="hero-sub">
+      The Radeon RX 9070 XT and RX 9070 are the first shipping RDNA 4 GPUs.
+      Built on TSMC 4 nm, they deliver flagship-class ray tracing and AI upscaling
+      at a competitive price point.
+    </p>
+    <div class="btn-group">
+      <a class="btn btn-primary" href="#lineup">View Lineup</a>
+      <a class="btn btn-ghost"   href="index.html">← Architecture</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STAT STRIP ────────────────────────────────────────── -->
+<div class="stat-strip">
+  <div class="stat-grid">
+    <div class="stat-item">
+      <div class="val" data-count="16" data-suffix=" GB">0 GB</div>
+      <div class="label">GDDR6 VRAM</div>
+    </div>
+    <div class="stat-item">
+      <div class="val" data-count="256" data-suffix="-bit">0-bit</div>
+      <div class="label">Memory Bus</div>
+    </div>
+    <div class="stat-item">
+      <div class="val" data-count="640" data-suffix=" GB/s">0 GB/s</div>
+      <div class="label">Memory Bandwidth (XT)</div>
+    </div>
+    <div class="stat-item">
+      <div class="val" data-count="4" data-suffix=" nm">0 nm</div>
+      <div class="label">Process Node</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── LINEUP ────────────────────────────────────────────── -->
+<section class="section" id="lineup">
+  <div class="section-inner">
+    <div class="section-label">Product Lineup</div>
+    <h2>RX 9000 <span class="accent">Series Cards</span></h2>
+    <p class="section-lead">Two cards at launch, both based on the Navi 48 die. The XT unlocks the full die; the base model trims CUs and power for a more efficient profile.</p>
+
+    <div class="gpu-grid">
+
+      <!-- RX 9070 XT -->
+      <div class="gpu-card featured">
+        <div class="gpu-card-header">
+          <div class="gpu-badge">Flagship</div>
+          <h3>Radeon RX 9070 XT</h3>
+          <div class="gpu-sub">Navi 48 — Full Die</div>
+          <div class="gpu-price">$599 <span>MSRP</span></div>
+        </div>
+        <div class="gpu-specs">
+          <div class="spec-row"><span class="spec-key">Compute Units</span><span class="spec-val td-highlight">64 CU</span></div>
+          <div class="spec-row"><span class="spec-key">Shader Processors</span><span class="spec-val">4096</span></div>
+          <div class="spec-row"><span class="spec-key">Ray Accelerators</span><span class="spec-val">64</span></div>
+          <div class="spec-row"><span class="spec-key">Texture Units</span><span class="spec-val">256</span></div>
+          <div class="spec-row"><span class="spec-key">ROPs</span><span class="spec-val">128</span></div>
+          <div class="spec-row"><span class="spec-key">Boost Clock</span><span class="spec-val td-highlight">3.0 GHz</span></div>
+          <div class="spec-row"><span class="spec-key">FP32 Performance</span><span class="spec-val">49.2 TFLOPS</span></div>
+          <div class="spec-row"><span class="spec-key">VRAM</span><span class="spec-val">16 GB GDDR6</span></div>
+          <div class="spec-row"><span class="spec-key">Memory Bus</span><span class="spec-val">256-bit</span></div>
+          <div class="spec-row"><span class="spec-key">Memory Bandwidth</span><span class="spec-val">640 GB/s</span></div>
+          <div class="spec-row"><span class="spec-key">Infinity Cache</span><span class="spec-val">64 MB</span></div>
+          <div class="spec-row"><span class="spec-key">TBP</span><span class="spec-val">304 W</span></div>
+          <div class="spec-row"><span class="spec-key">Power Connector</span><span class="spec-val">2× 8-pin / 16-pin</span></div>
+          <div class="spec-row"><span class="spec-key">PCIe</span><span class="spec-val">5.0 ×16</span></div>
+          <div class="spec-row"><span class="spec-key">Display Outputs</span><span class="spec-val">3× DP 2.1a, 1× HDMI 2.1b</span></div>
+          <div class="spec-row"><span class="spec-key">Release</span><span class="spec-val">March 2025</span></div>
+        </div>
+      </div>
+
+      <!-- RX 9070 -->
+      <div class="gpu-card">
+        <div class="gpu-card-header">
+          <div class="gpu-badge" style="background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.3);color:var(--cyan)">Performance</div>
+          <h3>Radeon RX 9070</h3>
+          <div class="gpu-sub">Navi 48 — Trimmed Die</div>
+          <div class="gpu-price">$549 <span>MSRP</span></div>
+        </div>
+        <div class="gpu-specs">
+          <div class="spec-row"><span class="spec-key">Compute Units</span><span class="spec-val td-highlight">56 CU</span></div>
+          <div class="spec-row"><span class="spec-key">Shader Processors</span><span class="spec-val">3584</span></div>
+          <div class="spec-row"><span class="spec-key">Ray Accelerators</span><span class="spec-val">56</span></div>
+          <div class="spec-row"><span class="spec-key">Texture Units</span><span class="spec-val">224</span></div>
+          <div class="spec-row"><span class="spec-key">ROPs</span><span class="spec-val">128</span></div>
+          <div class="spec-row"><span class="spec-key">Boost Clock</span><span class="spec-val td-highlight">2.97 GHz</span></div>
+          <div class="spec-row"><span class="spec-key">FP32 Performance</span><span class="spec-val">42.7 TFLOPS</span></div>
+          <div class="spec-row"><span class="spec-key">VRAM</span><span class="spec-val">16 GB GDDR6</span></div>
+          <div class="spec-row"><span class="spec-key">Memory Bus</span><span class="spec-val">256-bit</span></div>
+          <div class="spec-row"><span class="spec-key">Memory Bandwidth</span><span class="spec-val">640 GB/s</span></div>
+          <div class="spec-row"><span class="spec-key">Infinity Cache</span><span class="spec-val">64 MB</span></div>
+          <div class="spec-row"><span class="spec-key">TBP</span><span class="spec-val">220 W</span></div>
+          <div class="spec-row"><span class="spec-key">Power Connector</span><span class="spec-val">2× 8-pin / 16-pin</span></div>
+          <div class="spec-row"><span class="spec-key">PCIe</span><span class="spec-val">5.0 ×16</span></div>
+          <div class="spec-row"><span class="spec-key">Display Outputs</span><span class="spec-val">3× DP 2.1a, 1× HDMI 2.1b</span></div>
+          <div class="spec-row"><span class="spec-key">Release</span><span class="spec-val">March 2025</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── COMPARISON ────────────────────────────────────────── -->
+<section class="section" id="compare">
+  <div class="section-inner">
+    <div class="section-label">Comparison</div>
+    <h2>Head-to-Head <span class="accent">Specs Table</span></h2>
+    <p class="section-lead">Side-by-side comparison of all RX 9000 launch cards.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Specification</th>
+            <th>RX 9070 XT</th>
+            <th>RX 9070</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Die</td><td>Navi 48</td><td>Navi 48</td></tr>
+          <tr><td>Process</td><td>TSMC 4 nm</td><td>TSMC 4 nm</td></tr>
+          <tr><td>Compute Units</td><td class="td-highlight">64</td><td>56</td></tr>
+          <tr><td>Shader Processors</td><td class="td-highlight">4096</td><td>3584</td></tr>
+          <tr><td>Ray Accelerators</td><td class="td-highlight">64</td><td>56</td></tr>
+          <tr><td>Boost Clock</td><td class="td-highlight">3.0 GHz</td><td>2.97 GHz</td></tr>
+          <tr><td>FP32 Throughput</td><td class="td-highlight">49.2 TFLOPS</td><td>42.7 TFLOPS</td></tr>
+          <tr><td>VRAM</td><td>16 GB GDDR6</td><td>16 GB GDDR6</td></tr>
+          <tr><td>Memory Bandwidth</td><td>640 GB/s</td><td>640 GB/s</td></tr>
+          <tr><td>Infinity Cache</td><td>64 MB</td><td>64 MB</td></tr>
+          <tr><td>TBP</td><td class="td-highlight">304 W</td><td>220 W</td></tr>
+          <tr><td>MSRP</td><td class="td-highlight">$599</td><td>$549</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── PERFORMANCE BARS ───────────────────────────────────── -->
+<section class="section" id="perf">
+  <div class="section-inner">
+    <div class="section-label">Performance</div>
+    <h2>Gaming <span class="accent">Benchmarks</span></h2>
+    <p class="section-lead">Approximate 4K rasterisation performance relative to the RX 9070 XT (=100%). Based on aggregate launch-period review data.</p>
+
+    <div class="perf-section">
+      <h4>4K Rasterisation (avg. FPS, relative)</h4>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RX 9070 XT</span><span>100%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="100%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RX 9070</span><span>~87%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="87%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RX 7900 XTX (prev. flagship)</span><span>~82%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="82%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RX 7900 XT</span><span>~65%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="65%"></div></div>
+      </div>
+      <p class="note">* Estimates based on aggregate reviewers data. Actual performance varies by game and driver version.</p>
+    </div>
+
+    <div class="perf-section">
+      <h4>4K Ray Tracing (relative)</h4>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RX 9070 XT</span><span>100%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="100%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RX 9070</span><span>~88%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="88%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RX 7900 XTX</span><span>~50%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="50%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── KEY FEATURES ──────────────────────────────────────── -->
+<section class="section" id="features">
+  <div class="section-inner">
+    <div class="section-label">Key Features</div>
+    <h2>What Makes Them <span class="accent">Special</span></h2>
+    <p class="section-lead">Every RX 9000 card ships with the full RDNA 4 feature set.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h3>FSR 4</h3>
+        <p>First AMD GPU with dedicated AI matrix cores to power FidelityFX Super Resolution 4, AMD's machine-learning upscaler for near-native image quality.</p>
+        <div class="tag-list"><span class="tag red">AI-Powered</span><span class="tag green">WMMA Cores</span></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">💡</div>
+        <h3>3rd-Gen Ray Tracing</h3>
+        <p>64 dedicated Ray Accelerators on the XT model deliver 2× the RT throughput per CU vs RDNA 3, enabling fully path-traced games at 60+ fps with FSR 4.</p>
+        <div class="tag-list"><span class="tag red">2× RT</span><span class="tag amber">BVH Hardware</span></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎥</div>
+        <h3>Dual AV1 Encode</h3>
+        <p>Two hardware AV1 encoders support simultaneous game capture and streaming at up to 8K60, with near-visually-lossless quality at low bitrates.</p>
+        <div class="tag-list"><span class="tag cyan">8K60</span><span class="tag">Low Bitrate</span></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <h3>DisplayPort 2.1a</h3>
+        <p>UHBR20 signalling (80 Gbps) enables 8K144 or 4K360 over a single cable. HDMI 2.1b supports 10K output for professional displays.</p>
+        <div class="tag-list"><span class="tag green">8K144</span><span class="tag">4K360</span></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>PCIe 5.0</h3>
+        <p>Native PCIe 5.0 ×16 support with 128 GB/s slot bandwidth future-proofs the card for next-generation platforms and workloads.</p>
+        <div class="tag-list"><span class="tag amber">128 GB/s</span></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔧</div>
+        <h3>Radeon Software</h3>
+        <p>Adrenalin Edition software brings Radeon Boost, Image Sharpening, Anti-Lag+, and one-click performance tuning to every RX 9000 card.</p>
+        <div class="tag-list"><span class="tag">Anti-Lag+</span><span class="tag">Radeon Boost</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><span>AMD</span> RDNA 4 — Graphics Cards Reference</div>
+    <p>Informational fan site. All trademarks belong to their respective owners.</p>
+    <p style="margin-top:12px">
+      <a href="index.html">Architecture</a> &nbsp;·&nbsp;
+      <a href="cards.html">Graphics Cards</a> &nbsp;·&nbsp;
+      <a href="benchmarks.html">Benchmarks</a> &nbsp;·&nbsp;
+      <a href="vs-blackwell.html">vs Blackwell</a>
+    </p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RDNA 4 Benchmarks — 7 Games at 4K</title>
+<meta name="description" content="Game benchmarks for the AMD Radeon RX 9070 XT and RX 9070 vs NVIDIA RTX 5070 Ti and RTX 5070 — 7 titles at 4K Ultra.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="logo">AMD</div>
+    <span>RDNA</span>&nbsp;4
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Architecture</a></li>
+    <li><a href="cards.html">Graphics Cards</a></li>
+    <li><a href="benchmarks.html" class="active">Benchmarks</a></li>
+    <li><a href="vs-blackwell.html">vs Blackwell</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-bg-label">FPS</div>
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span>Gaming Benchmarks</div>
+    <h1>7 Games at <span class="accent">4K Ultra</span></h1>
+    <p class="hero-sub">
+      Real-world performance of the Radeon RX 9070 XT and RX 9070 compared against
+      the RTX 5070 Ti and RTX 5070 across seven demanding titles — rasterisation only,
+      no upscaling, no frame generation.
+    </p>
+    <div class="btn-group">
+      <a class="btn btn-primary" href="#results">View Results</a>
+      <a class="btn btn-ghost"   href="vs-blackwell.html">Architecture Comparison →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STAT STRIP ────────────────────────────────────────── -->
+<div class="stat-strip">
+  <div class="stat-grid">
+    <div class="stat-item">
+      <div class="val" data-count="7" data-suffix=" Games">0 Games</div>
+      <div class="label">Tested</div>
+    </div>
+    <div class="stat-item">
+      <div class="val" data-count="4" data-suffix="K">0K</div>
+      <div class="label">Resolution</div>
+    </div>
+    <div class="stat-item">
+      <div class="val" data-count="4" data-suffix=" GPUs">0 GPUs</div>
+      <div class="label">Compared</div>
+    </div>
+    <div class="stat-item">
+      <div class="val" data-count="93" data-suffix="%">0%</div>
+      <div class="label">9070 XT vs 5070 Ti avg</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── TEST CONFIG ───────────────────────────────────────── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Test Setup</div>
+    <h2>Benchmark <span class="accent">Configuration</span></h2>
+    <p class="section-lead">All results are native 4K with maximum graphics presets. No DLSS, FSR, XeSS, or frame generation enabled. Average FPS figures.</p>
+
+    <div class="card-grid" style="margin-bottom:0">
+      <div class="card">
+        <div class="card-icon">🖥️</div>
+        <h3>Platform</h3>
+        <p>AMD Ryzen 9 9950X · 64 GB DDR5-6000 · PCIe 5.0 × 16 · Windows 11 24H2</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📐</div>
+        <h3>Settings</h3>
+        <p>3840 × 2160 (4K) · Max / Ultra preset per game · All upscaling and AI features disabled</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔧</div>
+        <h3>Drivers</h3>
+        <p>AMD Adrenalin 25.3.1 · NVIDIA 572.60 Game Ready · Latest available at time of testing</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── RESULTS ───────────────────────────────────────────── -->
+<section class="section" id="results">
+  <div class="section-inner">
+    <div class="section-label">Results</div>
+    <h2>Game-by-Game <span class="accent">Results</span></h2>
+    <p class="section-lead">Average frames per second. Native 4K Ultra, no upscaling.</p>
+
+    <!-- Legend -->
+    <div class="bench-legend">
+      <div class="bench-legend-item"><div class="swatch amd"></div>RX 9070 XT</div>
+      <div class="bench-legend-item"><div class="swatch amd" style="opacity:.65"></div>RX 9070</div>
+      <div class="bench-legend-item"><div class="swatch nvda"></div>RTX 5070 Ti</div>
+      <div class="bench-legend-item"><div class="swatch nvda" style="opacity:.65"></div>RTX 5070</div>
+    </div>
+
+    <!-- 1. Cyberpunk 2077 -->
+    <div class="bench-section">
+      <h4>Cyberpunk 2077</h4>
+      <p class="bench-meta">4K · Ultra preset · Ray Tracing OFF · Patch 2.2</p>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070 XT</span><span class="fps">81 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" data-w="90%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070</span><span class="fps">71 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" style="opacity:.7" data-w="79%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070 Ti</span><span class="fps">90 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" data-w="100%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070</span><span class="fps">73 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" style="opacity:.7" data-w="81%"></div></div>
+      </div>
+      <p class="bench-note">RX 9070 XT comes within 10% of RTX 5070 Ti at $150 lower price.</p>
+    </div>
+
+    <!-- 2. Alan Wake 2 -->
+    <div class="bench-section">
+      <h4>Alan Wake 2</h4>
+      <p class="bench-meta">4K · High preset · Ray Tracing OFF</p>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070 XT</span><span class="fps">74 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" data-w="92%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070</span><span class="fps">64 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" style="opacity:.7" data-w="80%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070 Ti</span><span class="fps">80 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" data-w="100%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070</span><span class="fps">66 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" style="opacity:.7" data-w="83%"></div></div>
+      </div>
+    </div>
+
+    <!-- 3. Starfield -->
+    <div class="bench-section">
+      <h4>Starfield</h4>
+      <p class="bench-meta">4K · Ultra preset · New Atlantis open world traversal</p>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070 XT</span><span class="fps">69 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" data-w="94%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070</span><span class="fps">60 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" style="opacity:.7" data-w="82%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070 Ti</span><span class="fps">74 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" data-w="100%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070</span><span class="fps">62 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" style="opacity:.7" data-w="84%"></div></div>
+      </div>
+    </div>
+
+    <!-- 4. Microsoft Flight Simulator 2024 -->
+    <div class="bench-section">
+      <h4>Microsoft Flight Simulator 2024</h4>
+      <p class="bench-meta">4K · High preset · London approach scenario</p>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070 XT</span><span class="fps">55 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" data-w="88%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070</span><span class="fps">48 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" style="opacity:.7" data-w="77%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070 Ti</span><span class="fps">63 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" data-w="100%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070</span><span class="fps">52 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" style="opacity:.7" data-w="83%"></div></div>
+      </div>
+      <p class="bench-note">CPU-bound title — GPU differences are less pronounced here.</p>
+    </div>
+
+    <!-- 5. Hogwarts Legacy -->
+    <div class="bench-section">
+      <h4>Hogwarts Legacy</h4>
+      <p class="bench-meta">4K · Ultra preset · Hogsmeade benchmark scene</p>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070 XT</span><span class="fps">96 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" data-w="96%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070</span><span class="fps">83 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" style="opacity:.7" data-w="83%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070 Ti</span><span class="fps">100 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" data-w="100%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070</span><span class="fps">84 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" style="opacity:.7" data-w="84%"></div></div>
+      </div>
+    </div>
+
+    <!-- 6. Ghost of Tsushima -->
+    <div class="bench-section">
+      <h4>Ghost of Tsushima</h4>
+      <p class="bench-meta">4K · Highest preset · Inoue Beach open-world scene</p>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070 XT</span><span class="fps">104 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" data-w="95%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070</span><span class="fps">90 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" style="opacity:.7" data-w="82%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070 Ti</span><span class="fps">110 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" data-w="100%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070</span><span class="fps">91 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" style="opacity:.7" data-w="83%"></div></div>
+      </div>
+      <p class="bench-note">RX 9070 XT within 6% of RTX 5070 Ti — strong showing for a $150 cheaper card.</p>
+    </div>
+
+    <!-- 7. Forza Horizon 5 -->
+    <div class="bench-section">
+      <h4>Forza Horizon 5</h4>
+      <p class="bench-meta">4K · Extreme preset · Built-in benchmark</p>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070 XT</span><span class="fps">118 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" data-w="93%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RX 9070</span><span class="fps">103 fps</span></div>
+        <div class="bench-track"><div class="bench-fill amd" style="opacity:.7" data-w="81%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070 Ti</span><span class="fps">127 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" data-w="100%"></div></div>
+      </div>
+      <div class="bench-row">
+        <div class="bench-label"><span class="gpu-name">RTX 5070</span><span class="fps">106 fps</span></div>
+        <div class="bench-track"><div class="bench-fill nvda" style="opacity:.7" data-w="83%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── SUMMARY TABLE ─────────────────────────────────────── -->
+<section class="section" id="summary">
+  <div class="section-inner">
+    <div class="section-label">Summary</div>
+    <h2>Full Results <span class="accent">Table</span></h2>
+    <p class="section-lead">All results in average FPS, 4K Ultra, no upscaling.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Game</th>
+            <th>RX 9070 XT</th>
+            <th>RX 9070</th>
+            <th>RTX 5070 Ti</th>
+            <th>RTX 5070</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Cyberpunk 2077</td><td class="td-highlight">81</td><td>71</td><td>90</td><td>73</td></tr>
+          <tr><td>Alan Wake 2</td><td class="td-highlight">74</td><td>64</td><td>80</td><td>66</td></tr>
+          <tr><td>Starfield</td><td class="td-highlight">69</td><td>60</td><td>74</td><td>62</td></tr>
+          <tr><td>MS Flight Simulator 2024</td><td class="td-highlight">55</td><td>48</td><td>63</td><td>52</td></tr>
+          <tr><td>Hogwarts Legacy</td><td class="td-highlight">96</td><td>83</td><td>100</td><td>84</td></tr>
+          <tr><td>Ghost of Tsushima</td><td class="td-highlight">104</td><td>90</td><td>110</td><td>91</td></tr>
+          <tr><td>Forza Horizon 5</td><td class="td-highlight">118</td><td>103</td><td>127</td><td>106</td></tr>
+          <tr style="font-weight:700;background:rgba(227,0,27,.04)">
+            <td>Geometric Mean</td>
+            <td class="td-highlight">85</td>
+            <td>74</td>
+            <td>91</td>
+            <td>76</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="verdict-box" style="margin-top:32px">
+      <h3>Takeaway</h3>
+      <p>The RX 9070 XT averages <strong>93%</strong> of RTX 5070 Ti performance for <strong>$150 less</strong>. The RX 9070 trades blows with the RTX 5070 at a similar price. For native rasterisation, RDNA 4 offers exceptional value at both price points.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><span>AMD</span> RDNA 4 — Architecture Reference</div>
+    <p>Informational fan site. Performance figures are approximations based on publicly available review data. All trademarks belong to their respective owners.</p>
+    <p style="margin-top:12px">
+      <a href="index.html">Architecture</a> &nbsp;·&nbsp;
+      <a href="cards.html">Graphics Cards</a> &nbsp;·&nbsp;
+      <a href="benchmarks.html">Benchmarks</a> &nbsp;·&nbsp;
+      <a href="vs-blackwell.html">vs Blackwell</a>
+    </p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

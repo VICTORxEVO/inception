@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RDNA 4 vs Blackwell — Architecture Comparison</title>
+<meta name="description" content="Head-to-head architecture comparison: AMD RDNA 4 (Navi 48) vs NVIDIA Blackwell (GB203) — compute, ray tracing, AI, memory, and efficiency.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="logo">AMD</div>
+    <span>RDNA</span>&nbsp;4
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Architecture</a></li>
+    <li><a href="cards.html">Graphics Cards</a></li>
+    <li><a href="benchmarks.html">Benchmarks</a></li>
+    <li><a href="vs-blackwell.html" class="active">vs Blackwell</a></li>
+  </ul>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────────── -->
+<section class="hero vs-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-bg-label">VS</div>
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span>Architecture Comparison</div>
+    <h1><span class="accent">RDNA 4</span> vs<br>Blackwell</h1>
+    <p class="hero-sub">
+      A deep architectural comparison between AMD's RDNA 4 (Navi 48) and NVIDIA's
+      Blackwell (GB203) — two competing GPU designs targeting the same performance tier.
+    </p>
+    <div class="btn-group">
+      <a class="btn btn-primary" href="#arch-compare">Compare Architecture</a>
+      <a class="btn btn-ghost"   href="benchmarks.html">See Game Benchmarks →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STAT STRIP ────────────────────────────────────────── -->
+<div class="stat-strip">
+  <div class="stat-grid">
+    <div class="stat-item">
+      <div class="val" data-count="4" data-suffix=" nm">0 nm</div>
+      <div class="label">RDNA 4 Node (TSMC)</div>
+    </div>
+    <div class="stat-item">
+      <div class="val" data-count="4" data-suffix="N">0N</div>
+      <div class="label">Blackwell Node (TSMC)</div>
+    </div>
+    <div class="stat-item">
+      <div class="val" data-count="2" data-suffix="×">0×</div>
+      <div class="label">Ray Tracing Gain RDNA 4</div>
+    </div>
+    <div class="stat-item">
+      <div class="val" data-count="4" data-suffix="×">0×</div>
+      <div class="label">AI Throughput Gain RDNA 4</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── ARCH SPECS ────────────────────────────────────────── -->
+<section class="section" id="arch-compare">
+  <div class="section-inner">
+    <div class="section-label">Die Specifications</div>
+    <h2>Navi 48 vs <span class="accent">GB203</span></h2>
+    <p class="section-lead">
+      Both dies target the $550–$750 segment. The Navi 48 is a monolithic TSMC 4 nm die;
+      GB203 (powering RTX 5070 Ti &amp; RTX 5080) also uses TSMC 4N.
+    </p>
+
+    <div class="vs-split">
+      <div class="vs-col amd">
+        <h3>AMD — Navi 48 (RDNA 4)</h3>
+        <div class="vs-row"><span class="vs-key">Product</span><span class="vs-val">RX 9070 XT</span></div>
+        <div class="vs-row"><span class="vs-key">Process</span><span class="vs-val win">TSMC 4 nm</span></div>
+        <div class="vs-row"><span class="vs-key">Transistors</span><span class="vs-val">~53 billion</span></div>
+        <div class="vs-row"><span class="vs-key">Shader Processors</span><span class="vs-val">4 096</span></div>
+        <div class="vs-row"><span class="vs-key">Compute Units</span><span class="vs-val">64</span></div>
+        <div class="vs-row"><span class="vs-key">Ray Accelerators</span><span class="vs-val">64 (3rd gen)</span></div>
+        <div class="vs-row"><span class="vs-key">AI Units</span><span class="vs-val win">64 WMMA</span></div>
+        <div class="vs-row"><span class="vs-key">FP32 Throughput</span><span class="vs-val">49.2 TFLOPS</span></div>
+        <div class="vs-row"><span class="vs-key">Memory</span><span class="vs-val">16 GB GDDR6</span></div>
+        <div class="vs-row"><span class="vs-key">Memory Bus</span><span class="vs-val">256-bit</span></div>
+        <div class="vs-row"><span class="vs-key">Memory Bandwidth</span><span class="vs-val">640 GB/s</span></div>
+        <div class="vs-row"><span class="vs-key">Infinity Cache</span><span class="vs-val win">64 MB</span></div>
+        <div class="vs-row"><span class="vs-key">TBP</span><span class="vs-val win">304 W</span></div>
+        <div class="vs-row"><span class="vs-key">PCIe</span><span class="vs-val">5.0 ×16</span></div>
+        <div class="vs-row"><span class="vs-key">MSRP</span><span class="vs-val win">$599</span></div>
+      </div>
+      <div class="vs-divider">VS</div>
+      <div class="vs-col nvda">
+        <h3>NVIDIA — GB203 (Blackwell)</h3>
+        <div class="vs-row"><span class="vs-key">Product</span><span class="vs-val">RTX 5070 Ti</span></div>
+        <div class="vs-row"><span class="vs-key">Process</span><span class="vs-val">TSMC 4N</span></div>
+        <div class="vs-row"><span class="vs-key">Transistors</span><span class="vs-val nvwin">~45 billion</span></div>
+        <div class="vs-row"><span class="vs-key">Shader Processors</span><span class="vs-val nvwin">8 960</span></div>
+        <div class="vs-row"><span class="vs-key">Streaming Multiprocessors</span><span class="vs-val nvwin">70</span></div>
+        <div class="vs-row"><span class="vs-key">RT Cores</span><span class="vs-val nvwin">70 (5th gen)</span></div>
+        <div class="vs-row"><span class="vs-key">Tensor Cores</span><span class="vs-val">280 (4th gen)</span></div>
+        <div class="vs-row"><span class="vs-key">FP32 Throughput</span><span class="vs-val nvwin">~89.1 TFLOPS</span></div>
+        <div class="vs-row"><span class="vs-key">Memory</span><span class="vs-val nvwin">16 GB GDDR7</span></div>
+        <div class="vs-row"><span class="vs-key">Memory Bus</span><span class="vs-val">256-bit</span></div>
+        <div class="vs-row"><span class="vs-key">Memory Bandwidth</span><span class="vs-val nvwin">896 GB/s</span></div>
+        <div class="vs-row"><span class="vs-key">L2 Cache</span><span class="vs-val">48 MB</span></div>
+        <div class="vs-row"><span class="vs-key">TBP</span><span class="vs-val">300 W</span></div>
+        <div class="vs-row"><span class="vs-key">PCIe</span><span class="vs-val">5.0 ×16</span></div>
+        <div class="vs-row"><span class="vs-key">MSRP</span><span class="vs-val">$749</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── ARCHITECTURE FEATURES ─────────────────────────────── -->
+<section class="section" id="features">
+  <div class="section-inner">
+    <div class="section-label">Architecture Features</div>
+    <h2>Feature-by-Feature <span class="accent">Breakdown</span></h2>
+    <p class="section-lead">Where each architecture makes different design choices and trade-offs.</p>
+
+    <!-- Compute -->
+    <h3 style="font-size:1.1rem;font-weight:700;color:var(--off);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px">Compute</h3>
+    <div class="vs-feature-grid">
+      <div class="vs-feature-card amd-card">
+        <h4>RDNA 4 — Dual SIMD32</h4>
+        <p>64 shader processors per CU split across two SIMD32 units. Improved out-of-order scheduler issues up to 4 independent instructions per SIMD per clock. Better divergence handling for mixed game/compute workloads.</p>
+      </div>
+      <div class="vs-feature-card nvda-card">
+        <h4>Blackwell — SIMT + FP4 Units</h4>
+        <p>128 FP32 CUDA cores per SM. Blackwell adds native FP4 and FP6 precision for AI inference alongside FP32/FP16 traditional compute. Higher raw shader count favours brute-force rasterisation scenarios.</p>
+      </div>
+    </div>
+
+    <!-- Ray Tracing -->
+    <h3 style="font-size:1.1rem;font-weight:700;color:var(--off);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;margin-top:32px">Ray Tracing</h3>
+    <div class="vs-feature-grid">
+      <div class="vs-feature-card amd-card">
+        <h4>RDNA 4 — 3rd-Gen Ray Accelerators</h4>
+        <p>One hardware Ray Accelerator per CU — 64 total on Navi 48. 2× BVH traversal throughput versus RDNA 3. Hardware handles procedural intersections, reducing shader-processor load during complex RT scenes.</p>
+      </div>
+      <div class="vs-feature-card nvda-card">
+        <h4>Blackwell — 5th-Gen RT Cores</h4>
+        <p>Two dedicated RT Cores per SM — 140 total on GB203. Blackwell RT Cores include a dedicated SER (Shader Execution Reordering) unit inside the RT pipeline, improving occupancy for highly divergent RT workloads. Generally leads in raw RT performance.</p>
+      </div>
+    </div>
+
+    <!-- AI -->
+    <h3 style="font-size:1.1rem;font-weight:700;color:var(--off);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;margin-top:32px">AI &amp; Upscaling</h3>
+    <div class="vs-feature-grid">
+      <div class="vs-feature-card amd-card">
+        <h4>RDNA 4 — WMMA Cores + FSR 4</h4>
+        <p>New dedicated WMMA matrix units support FP16, BF16, INT8, and INT4. Enables FSR 4, AMD's first machine-learning upscaler. Runs independently of the shader processors. 4× improvement vs RDNA 3 in AI throughput.</p>
+      </div>
+      <div class="vs-feature-card nvda-card">
+        <h4>Blackwell — 4th-Gen Tensor + DLSS 4 MFG</h4>
+        <p>4th-gen Tensor Cores support FP4 precision (first time in a consumer GPU), providing far higher AI throughput for inference. DLSS 4 adds Multi-Frame Generation — generating up to 3 frames per rendered frame — offering massive effective frame rate gains.</p>
+      </div>
+    </div>
+
+    <!-- Memory -->
+    <h3 style="font-size:1.1rem;font-weight:700;color:var(--off);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;margin-top:32px">Memory Subsystem</h3>
+    <div class="vs-feature-grid">
+      <div class="vs-feature-card amd-card">
+        <h4>RDNA 4 — GDDR6 + Infinity Cache</h4>
+        <p>16 GB GDDR6 at 640 GB/s augmented by 64 MB of on-die Infinity Cache. The cache's hit rate dramatically reduces effective latency, compensating for lower raw memory bandwidth versus GDDR7.</p>
+      </div>
+      <div class="vs-feature-card nvda-card">
+        <h4>Blackwell — GDDR7</h4>
+        <p>16 GB GDDR7 delivers 896 GB/s of raw memory bandwidth — 40% more than Navi 48. No large on-die cache equivalent; Blackwell relies on raw bandwidth and a 48 MB L2 for latency reduction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── PERFORMANCE COMPARISON ────────────────────────────── -->
+<section class="section" id="perf">
+  <div class="section-inner">
+    <div class="section-label">Performance</div>
+    <h2>Relative <span class="accent">Performance</span></h2>
+    <p class="section-lead">Approximate relative performance. RTX 5070 Ti = 100 baseline. Data sourced from aggregate reviews at 4K.</p>
+
+    <div class="compare-block">
+      <h4>4K Rasterisation</h4>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RTX 5070 Ti (baseline)</span><span>100%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="100%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RX 9070 XT</span><span>~93%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="93%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RTX 5070</span><span>~82%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="82%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RX 9070</span><span>~80%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="80%"></div></div>
+      </div>
+    </div>
+
+    <div class="compare-block">
+      <h4>4K Ray Tracing</h4>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RTX 5070 Ti (baseline)</span><span>100%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="100%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RX 9070 XT</span><span>~73%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="73%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RTX 5070</span><span>~79%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="79%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RX 9070</span><span>~63%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="63%"></div></div>
+      </div>
+    </div>
+
+    <div class="compare-block">
+      <h4>Performance-per-Dollar (higher is better)</h4>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RX 9070 XT — $599</span><span>100%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="100%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RX 9070 — $549</span><span>~96%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="96%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RTX 5070 Ti — $749</span><span>~81%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="81%"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label"><span>RTX 5070 — $599</span><span>~88%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-w="88%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── VERDICT ───────────────────────────────────────────── -->
+<section class="section" id="verdict">
+  <div class="section-inner">
+    <div class="section-label">Summary</div>
+    <h2>Which Architecture <span class="accent">Wins?</span></h2>
+    <p class="section-lead">It depends on what you prioritise.</p>
+
+    <div class="card-grid" style="margin-bottom:32px">
+      <div class="card">
+        <div class="card-icon">💰</div>
+        <h3>Best Value: RDNA 4</h3>
+        <p>At $599, the RX 9070 XT delivers ~93% of RTX 5070 Ti performance for $150 less. For pure rasterisation value, RDNA 4 wins clearly.</p>
+        <div class="tag-list"><span class="tag red">$150 Cheaper</span><span class="tag green">~93% Performance</span></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌟</div>
+        <h3>Best Ray Tracing: Blackwell</h3>
+        <p>NVIDIA's 5th-gen RT Cores and SER give a significant lead in ray-traced titles. If RT is your priority, the RTX 5070 Ti or RTX 5070 hold the advantage.</p>
+        <div class="tag-list"><span class="tag" style="color:#76b900;border-color:rgba(118,185,0,.3);background:rgba(118,185,0,.1)">RT Leader</span><span class="tag">SER</span></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h3>Best AI Features: Blackwell</h3>
+        <p>DLSS 4 Multi-Frame Generation is a meaningful advantage for supported titles, generating up to 3 extra frames. FSR 4 on RDNA 4 is competitive but lacks MFG.</p>
+        <div class="tag-list"><span class="tag" style="color:#76b900;border-color:rgba(118,185,0,.3);background:rgba(118,185,0,.1)">DLSS 4 MFG</span></div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Efficiency: RDNA 4</h3>
+        <p>304 W TBP on Navi 48 delivers competitive rasterisation perf-per-watt. GB203 at 300 W offers more raw throughput but at a higher cost.</p>
+        <div class="tag-list"><span class="tag red">Better $/perf</span></div>
+      </div>
+    </div>
+
+    <div class="verdict-box">
+      <h3>Bottom Line</h3>
+      <p>RDNA 4 is the smarter buy for rasterisation gaming at the $599 price point. Blackwell's Blackwell architecture holds architectural leads in ray tracing and AI features — particularly DLSS 4 MFG — making it the choice for content creators, ray-tracing enthusiasts, and those on platforms that support Multi-Frame Generation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><span>AMD</span> RDNA 4 — Architecture Reference</div>
+    <p>Informational fan site. All trademarks belong to their respective owners. Performance data is approximate and sourced from aggregate public reviews.</p>
+    <p style="margin-top:12px">
+      <a href="index.html">Architecture</a> &nbsp;·&nbsp;
+      <a href="cards.html">Graphics Cards</a> &nbsp;·&nbsp;
+      <a href="benchmarks.html">Benchmarks</a> &nbsp;·&nbsp;
+      <a href="vs-blackwell.html">vs Blackwell</a>
+    </p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
