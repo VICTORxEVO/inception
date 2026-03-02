@@ -6,6 +6,7 @@ set -e
 PHP_FPM_CONF="/etc/php${PHP_VER}/php-fpm.d/www.conf"
 sed -i 's|^listen = .*|listen = 0.0.0.0:9000|' "$PHP_FPM_CONF"
 sed -i 's|^;clear_env = no|clear_env = no|' "$PHP_FPM_CONF"
+sed -i 's/memory_limit = .*/memory_limit = 512M/' "/etc/php${PHP_VER}/php.ini"
 
 DB_PASS="$(cat /run/secrets/db_user_password)"
 WP_ADMIN_PASS="$(cat /run/secrets/wp_admin_password)"

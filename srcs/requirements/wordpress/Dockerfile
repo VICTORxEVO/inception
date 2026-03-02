@@ -23,9 +23,6 @@ RUN apk add --no-cache \
 # Ensure wp-cli can find php in PATH
 RUN ln -sf /usr/bin/php${PHP_VER} /usr/bin/php
 
-# Increase memory limit for PHP-FPM
-RUN sed -i 's/memory_limit = .*/memory_limit = 512M/' /etc/php${PHP_VER}/php.ini
-
 RUN curl -sS https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -o \
  /usr/local/bin/wp \
  && chmod +x /usr/local/bin/wp
