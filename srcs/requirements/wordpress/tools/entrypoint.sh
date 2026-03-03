@@ -69,7 +69,7 @@ then
   echo "installing redis plugin..."
   wp plugin install redis-cache --activate --allow-root
     
-  # Enable the actual Object Cache (This creates wp-content/object-cache.php)
+  # Enable the actual Object Cache (creates wp-content/object-cache.php)
    wp redis enable --allow-root
 fi
 
