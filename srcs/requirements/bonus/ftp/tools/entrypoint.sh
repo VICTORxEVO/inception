@@ -30,7 +30,7 @@ mkdir -p /var/www/html/wp-content/uploads
 adduser -D -h "/var/www/html" -G wpfiles "$FTP_ADMIN_USER"
 adduser -D -h "/var/www/html/wp-content/uploads" -G wpfiles "$FTP_USER"
 
-#give admin ownship to wordpress files so have all permitions
+#give admin ownship to wordpress files
 chown -R "$FTP_ADMIN_USER:wpfiles" /var/www/html
 #give read/execute permition to wordpress folder for all users exept admin 
 chmod -R 755 /var/www/html
@@ -42,6 +42,9 @@ chmod -R 775 /var/www/html/wp-content/uploads
 
 echo "$FTP_ADMIN_USER:$FTP_ADMIN_PASS" | chpasswd
 echo "$FTP_USER:$FTP_USER_PASS" | chpasswd
+
+# Forward syslog to stdout so Docker captures vsftpd logs
+syslogd -n -O /dev/stdout &
 
 # Handle shutdown signals properly
 trap 'kill -TERM $PID' TERM INT
