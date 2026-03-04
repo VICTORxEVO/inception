@@ -9,8 +9,8 @@ RUN apk add --no-cache \
 
 WORKDIR /var/www/html
 
-# lastest adminer 5.4.1
-RUN wget "https://www.adminer.org/static/download/5.4.1/adminer-5.4.1.php" \
+# lastest adminer 5.4.2
+RUN wget "https://github.com/vrana/adminer/releases/download/v5.4.2/adminer-5.4.2-mysql.php" \
     -O index.php && chmod 644 index.php
 
 EXPOSE 8080
