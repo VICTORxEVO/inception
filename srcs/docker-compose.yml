@@ -112,7 +112,7 @@ services:
       - wordpress
     environment:
       FTP_ADMIN_USER: ${FTP_ADMIN_USER}
-      FTP_USER: ${FTP_USER}
+      FTP_USER:       ${FTP_USER}
     secrets:
     - ftp_user_password
     - ftp_admin_password
@@ -138,7 +138,7 @@ services:
         condition: service_healthy
     environment:
       DATABASE_HOST: mariadb
-      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_USER:     ${MYSQL_USER}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
     secrets:
     - db_user_password
