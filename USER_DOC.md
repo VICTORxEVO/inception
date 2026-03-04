@@ -32,9 +32,9 @@ make down     # Stop all services
 
 ## Accessing the Website
 
-1. Ensure `ysbai-jo.42.fr` resolves to your VM's IP (configured in `/etc/hosts`).
-2. Open **https://ysbai-jo.42.fr** in a browser (accept the self-signed certificate).
-3. WordPress admin panel: **https://ysbai-jo.42.fr/wp-admin**
+1. Ensure `<LOGIN>.42.fr` resolves to your VM's IP (configured in `/etc/hosts`).
+2. Open **https://LOGIN.42.fr** in a browser (accept the self-signed certificate).
+3. WordPress admin panel: **https://LOGIN.42.fr/wp-admin**
 
 ## Credentials
 
