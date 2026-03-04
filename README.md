@@ -2,18 +2,72 @@
 
 *This project has been created as part of the 42 curriculum by ysbai-jo.*
 
-## Description
+## Project Description
 
-Inception is a system administration project that focuses on containerization using Docker. The goal is to build a small-scale infrastructure composed of multiple services, each running in its own Docker container. This project emphasizes understanding Docker architecture, container orchestration with Docker Compose, and implementing security best practices.
+Inception is a 42 system-administration project that builds a small production-like web infrastructure entirely with **Docker** and **Docker Compose**. Every service runs in its own container, built from scratch using custom `Dockerfile`s based on Alpine or Debian — no pre-built DockerHub images.
 
-The infrastructure consists of:
-- **NGINX** web server with TLS encryption (TLSv1.2/1.3)
-- **WordPress** CMS with PHP-FPM
-- **MariaDB** database
-- **Docker networking** for inter-container communication
-- **Persistent volumes** for data storage
+### Services (sources)
 
-All services are containerized from scratch using custom Dockerfiles based on Alpine or Debian, without relying on pre-built images from DockerHub.
+| Container | Role |
+|-----------|------|
+| `nginx` | Reverse proxy + TLS termination (TLSv1.2/1.3, port 443) |
+| `wordpress` | CMS + PHP-FPM (no Apache) |
+| `mariadb` | Relational database |
+| `redis` | Object cache for WordPress |
+| `ftp` | FTP access to the WordPress volume |
+| `adminer` | Browser-based DB admin (port 8080) |
+| `portainer` | Docker management UI (port 9443) |
+| `apache` | Static demo site (port 8888) |
+
+### Main Design Choices
+
+- **Single entry point** — only NGINX is exposed externally; all other services communicate over isolated internal networks.
+- **Secrets over env vars** — credentials are mounted via Docker secrets (`secrets/*.txt`), never stored in `.env` or images.
+- **Bind-mount volumes** — data directories live on the host under `/home/ysbai-jo/data/` for transparent backup and recovery.
+- **Minimal images** — each Dockerfile installs only what the service needs; processes run directly (`CMD`/`ENTRYPOINT`), not wrapped in a shell loop.
+
+### Key Comparisons
+
+#### Virtual Machines vs Docker
+
+| | VM | Docker |
+|--|----|----|
+| Overhead | Full guest OS | Shares host kernel |
+| Boot time | Minutes | Seconds |
+| Isolation | Hardware-level | Process/namespace-level |
+| Portability | Large disk images | Lightweight layers |
+
+**Choice:** Docker is sufficient for this web stack, faster to iterate, and far lighter on resources.
+
+#### Secrets vs Environment Variables
+
+| | Secrets | Env Vars |
+|--|--------|---------|
+| Storage | Files mounted in-memory (`/run/secrets/`) | `.env` / shell exports |
+| Visibility | Only to the target container | All child processes, `docker inspect` |
+| Risk | Low — not embedded in image | High if committed or leaked |
+
+**Choice:** Passwords (DB, FTP, WordPress) use Docker secrets; non-sensitive config (domain, usernames) uses `.env`.
+
+#### Docker Network vs Host Network
+
+| | Docker (bridge) | Host |
+|--|-----------------|------|
+| Isolation | Own network namespace | Shares host stack |
+| Service discovery | By container name | By port only |
+| Security | Controlled ingress/egress | Full host exposure |
+
+**Choice:** Custom bridge networks (`external_net`, `wp_net`, `db_net`, `cache_net`) limit blast radius and enable clean DNS-based routing.
+
+#### Docker Volumes vs Bind Mounts
+
+| | Docker Volumes | Bind Mounts |
+|--|---------------|-------------|
+| Managed by | Docker daemon | User (host path) |
+| Portability | Platform-independent | Host-path dependent |
+| Transparency | Opaque to host | Directly visible/editable |
+
+**Choice:** Bind mounts are used for `db_data` and `wp_data` so data is directly accessible on the host for backup and debugging.
 
 ## Instructions
 
@@ -36,7 +90,7 @@ cd inception
 ```bash
 # create env file with default values
 make env
-vim srcs/.env
+vim srcs/.env     # change default values
 ```
 
 3. Set up secrets (see DEV_DOC.md for details):
@@ -64,7 +118,7 @@ make down
 
 Clean (containers, images, volumes):
 ```bash
-make fclean
+make clean
 ```
 
 Restart services:
@@ -237,14 +291,6 @@ All AI-generated content was:
 - ✅ Modified based on project-specific requirements
 - ✅ Documented with comments explaining logic
 
-#### **Parts Built Without AI:**
-
-- Docker Compose orchestration logic (manual design)
-- Network architecture decisions (based on requirements analysis)
-- Volume and data persistence strategy (custom implementation)
-- Security implementation (manual certificate generation, secrets management)
-
-**Key Takeaway**: AI served as a productivity tool for repetitive tasks and initial templates, but all final implementations were fully understood, validated, and adapted to meet Inception's specific requirements.
 
 ## License
 
