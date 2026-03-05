@@ -109,14 +109,14 @@ srcs/
 
 ## Data Persistence
 
-Host data root: `/home/<username>/data/` — contains DB and WordPress files; back up this directory to preserve state.
+Host data root: `/home/ysbai-jo/data/` — contains DB and WordPress files; back up this directory to preserve state.
 
-All persistent data lives on the host at `/home/<username>/data/`:
+All persistent data lives on the host at `/home/ysbai-jo/data/`:
 
 | Volume | Host Path | Container Mount |
 |--------|-----------|-----------------|
-| `db_data` | `/home/<username>/data/db` | `/var/lib/mysql` |
-| `wp_data` | `/home/<username>/data/wp` | `/var/www/html` |
+| `db_data` | `/home/ysbai-jo/data/db` | `/var/lib/mysql` |
+| `wp_data` | `/home/ysbai-jo/data/wp` | `/var/www/html` |
 | `portainer_data` | Docker-managed | `/data` |
 
-These are bind-mount volumes. Deleting `/home/<username>/data/` removes all persistent state. Use `make delete` or `make clear` to do this via the Makefile.
+These are bind-mount volumes. Deleting `/home/ysbai-jo/data/` removes all persistent state. Use `make delete` or `make clear` to do this via the Makefile.
