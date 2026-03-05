@@ -46,11 +46,6 @@ echo "$FTP_USER:$FTP_USER_PASS" | chpasswd
 # Forward syslog to stdout so Docker captures vsftpd logs
 syslogd -n -O /dev/stdout &
 
-# Handle shutdown signals properly
-trap 'kill -TERM $PID' TERM INT
+echo "running command " "$@" "..."
 
-/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf &
-PID=$!
-wait $PID
-trap - TERM INT
-wait $PID
+exec "$@"
